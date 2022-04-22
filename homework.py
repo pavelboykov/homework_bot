@@ -40,7 +40,7 @@ logger.addHandler(handler)
 
 
 def send_message(bot, message):
-    """Функция отправляет сообщение в Telegram чат."""
+    """Отправляет сообщение в Telegram чат."""
     try:
         logger.info(f'Бот отправил сообщение: "{message}"')
         return bot.send_message(TELEGRAM_CHAT_ID, message)
@@ -50,7 +50,7 @@ def send_message(bot, message):
 
 
 def get_api_answer(current_timestamp):
-    """Функция делает запрос к единственному эндпоинту API-сервиса."""
+    """Делает запрос к эндпоинту API сервиса Практикум.Домашка."""
     timestamp = current_timestamp or int(time.time())
     params = {'from_date': timestamp}
     try:
@@ -71,9 +71,7 @@ def get_api_answer(current_timestamp):
 
 
 def check_response(response):
-    """Функция проверки корректности данных,
-    запрошенных от API сервиса Практикум.Домашка.
-    """
+    """Проверяет корректность данных, запрошенных от API Практикум.Домашка."""
     if type(response) != dict:
         message = \
             f'Тип данных в ответе от API не соотвествует ожидаемому.' \
@@ -96,9 +94,7 @@ def check_response(response):
 
 
 def parse_status(homework):
-    """Функция извлекает из информации
-    о конкретной домашней работе статус этой работы.
-    """
+    """Извлекает из информации о конкретной домашке её статус."""
     homework_name = homework['homework_name']
     homework_status = homework['status']
 
@@ -114,9 +110,7 @@ def parse_status(homework):
 
 
 def check_tokens():
-    """Функция проверяет доступность переменных окружения,
-    которые необходимы для работы программы.
-    """
+    """Проверяет доступность переменных окружения."""
     env_variables = {
         'PRACTICUM_TOKEN': PRACTICUM_TOKEN,
         'TELEGRAM_TOKEN': TELEGRAM_TOKEN,
