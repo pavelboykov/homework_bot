@@ -40,7 +40,7 @@ logger.addHandler(handler)
 
 
 def send_message(bot, message):
-    """Функция отправляет сообщение в Telegram чат"""
+    """Функция отправляет сообщение в Telegram чат."""
     try:
         logger.info(f'Бот отправил сообщение: "{message}"')
         return bot.send_message(TELEGRAM_CHAT_ID, message)
@@ -72,7 +72,7 @@ def get_api_answer(current_timestamp):
 
 def check_response(response):
     """Функция проверки корректности данных,
-    запрошенных от API сервиса Практикум.Домашка
+    запрошенных от API сервиса Практикум.Домашка.
     """
     if type(response) != dict:
         message = \

@@ -12,4 +12,3 @@ class CheckResponseException(Exception):
 
 class ParseStatusException(Exception):
     pass
-
