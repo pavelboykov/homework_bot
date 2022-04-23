@@ -9,7 +9,7 @@ import telegram
 from dotenv import load_dotenv
 
 import exceptions
-from settings import *
+from settings import ENDPOINT, HOMEWORK_STATUSES, RETRY_TIME
 
 load_dotenv()
 
