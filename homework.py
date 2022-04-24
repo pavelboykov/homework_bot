@@ -91,18 +91,16 @@ def check_response(response):
 
 def parse_status(homework):
     """Извлекает из информации о конкретной домашке её статус."""
-    try:
-        homework_name = homework['homework_name']
-    except KeyError as error:
-        message = f'Ключ homework_name недоступен: {error}'
+    if 'homework_name' not in homework:
+        message = 'Ключ homework_name недоступен'
         logger.error(message)
         raise KeyError(message)
-    try:
-        homework_status = homework['status']
-    except KeyError as error:
-        message = f'Ключ status недоступен: {error}'
+    if 'status' not in homework:
+        message = 'Ключ status недоступен'
         logger.error(message)
         raise KeyError(message)
+    homework_name = homework['homework_name']
+    homework_status = homework['status']
     if homework_status in HOMEWORK_STATUSES:
         verdict = HOMEWORK_STATUSES[homework_status]
         return f'Изменился статус проверки работы ' \
